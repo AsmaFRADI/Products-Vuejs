@@ -19,7 +19,7 @@ const updateProduct = async ({ body, params }: any, res: Response) => {
   const productRepository: MongoRepository<Product> = connection.getMongoRepository(Product);
 
   try {
-    await productRepository.updateOne({ id: productId }, value);
+    await productRepository.updateOne({ id: productId },  {$set: value});
 
     const updatedProduct = await productRepository.findOne({ id: productId });
 

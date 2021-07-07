@@ -2,7 +2,6 @@
     <div>
         <h1>New Product</h1>
         <product-form @createOrUpdate="createOrUpdate"></product-form>
-
     </div>
 </template>
 
@@ -18,7 +17,7 @@
         methods: {
             createOrUpdate: async function(product) {
                 await api.createProduct(product);
-                this.flash('product created', 'success');
+                this.$toastr.s("SUCCESS", "Product Created sucessfully");
                 this.$router.push(`/products`);
             }
         }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Edit Produit</h1>
-        <product-form @createOrUpdate="createOrUpdate" :product=this.product></product-form>
+        <product-form @createOrUpdate="createOrUpdate" :product=product></product-form>
     </div>
 </template>
 
@@ -13,7 +13,8 @@
         name: "edit-product",
         data: function() {
             return {
-                product: {}
+                product: {},
+                updatedProduct: {}
             };
         },
         created(){
@@ -21,13 +22,16 @@
         },
         methods: {
             createOrUpdate: async function(product) {
-                await api.updateProduct(product);
-                this.flash('product updated sucessfully!', 'success');
+                this.updatedProduct = {
+                    title: product.title,
+                    description: product.description,
+                    category: product.category,
+                    price: product.price
+                };
+                await api.updateProduct(this.updatedProduct, product.id);
+                this.$toastr.s("SUCCESS", "Product edited sucessfully");
                 this.$router.push(`/products`);
             }
-        },
-        async mounted() {
-           // this.product = await api.getProduct(this.$route.params.id);
         }
     }
 </script>

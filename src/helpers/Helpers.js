@@ -31,8 +31,8 @@ export const api = {
         const res = await axios.post(baseURL, payload);
         return res.data;
     }),
-    updateProduct: handleError(async payload => {
-        const res = await axios.put(baseURL + payload._id, payload);
+    updateProduct: handleError(async (payload, id) => {
+        const res = await axios.patch(baseURL + id, payload);
         return res.data;
     })
 };
