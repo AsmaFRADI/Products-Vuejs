@@ -1,0 +1,25 @@
+[
+  {
+    "name": "default",
+    "type": "mongodb",
+    "host": "localhost",
+    "port": 27017,
+    "database": "sales-taxes",
+    "synchronize": true,
+    "entities": ["src/entities/*.*"],
+    "useUnifiedTopology": true
+  },
+  {
+    "name": "cloud",
+    "type": "mongodb",
+    "host": "mongo",
+    "port": 27017,
+    "database": "sales-taxes",
+    "synchronize": true,
+    "entities": ["build/entities/*.*"],
+    "useUnifiedTopology": true,
+    "username": "root",
+    "password": "admin",
+    "authSource": "admin"
+  }
+]

@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
+import 'semantic-ui-css/semantic.css';
+import router from './routes/Router';
+import VueFlashMessage from 'vue-flash-message';
+Vue.use(VueFlashMessage);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+    router,
+    render: h => h(App),
+}).$mount('#app');
